@@ -1,0 +1,40 @@
+<form action="{% url 'study:editbook' bookid=book %}" method="post" novalidate>
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col">
+      <label class="form-text" for="{{bookForm.title.id_for_label}}">{{bookForm.title.label}}</label>
+      {{bookForm.title}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label class="form-text" for="{{bookForm.author.id_for_label}}">{{bookForm.author.label}}</label>
+      {{bookForm.author}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label class="form-text" for="{{bookForm.publisher.id_for_label}}">{{bookForm.publisher.label}}</label>
+      {{bookForm.publisher}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-2">
+      <label class="form-text" for="{{bookForm.chapters.id_for_label}}">{{bookForm.chapters.label}}</label>
+      {{bookForm.chapters}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-4">
+      <div class="form-check">
+        {{bookForm.finished_reading}}
+        <label class="form-check-label form-text" for="{{bookForm.finished_reading.id_for_label}}">{{bookForm.finished_reading.label}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <input type="hidden" name="next" value="{{ next }}">
+    <a type="button" class="btn btn-dgray text-lgray mr-1" href="{{ back }}">Back</a>
+    <button type="submit" class="btn btn-dgray text-lgray" name="button">Save</button>
+  </div>
+</form>

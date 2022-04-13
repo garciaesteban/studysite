@@ -1,0 +1,45 @@
+{% extends "../bases/home.html" %}
+
+{% block script %}
+{% if errorBookForm.errors %}
+<script>
+$(document).ready(function(){
+  $("#errorbookform").modal('show');
+});
+</script>
+{% endif %}
+{% if noteForm %}
+<script>
+$(document).ready(function(){
+  $("#noteform").modal('show');
+});
+</script>
+{% endif %}
+{% endblock script %}
+
+{% block navbar %}
+  {% include "../navs/home-navbar.html" %}
+{% endblock navbar %}
+
+{% block content %}
+  {% include "../home/home-content.html" %}
+{% endblock content %}
+
+{% block bookform %}
+  {% include "../forms/bookform.html" %}
+{% endblock bookform %}
+
+{% block errorbookform %}
+  {% include "../forms/errorbookform.html" %}
+{% endblock errorbookform%}
+
+
+{% block noteform%}
+{% if noteForm %}
+  {% include "../forms/noteform.html" %}
+{% endif %}
+{% endblock noteform %}
+
+{% block  errornoteform%}
+
+{% endblock errornoteform%}

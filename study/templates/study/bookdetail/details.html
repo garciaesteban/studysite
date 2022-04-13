@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h1>{{book}}</h1>
+  </div>
+  <div class="d-flex flex-wrap justify-content-center">
+    <div class="d-flex flex-column mr-3">
+      {{book.started_reading}}
+    </div>
+    <div class="d-flex flex-column mr-3">
+      {% if book.finished_reading == None %}
+        <p>Haven't finished_reading</p>
+      {% else %}
+        {{book.finished_reading}}
+      {% endif %}
+    </div>
+    <div class="d-flex flex-column mr-3">
+      {{book.author}}
+    </div>
+    <div class="d-flex flex-column mr-3">
+      {{book.publisher}}
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mb-2">
+    <a class="btn btn-lgray mr-1 text-dgray" href="{% url 'study:createnote' bookid=book.id %}">Create Note</a>
+    <a class="btn btn-lgray mr-1 text-dgray" href="{% url 'study:deletebook' book=book.id %}">Delete Book</a>
+    <a class="btn btn-lgray text-dgray" href="{% url 'study:editbook' bookid=book.id %}">Edit Book</a>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-1 mb-1">
+      {% for note in  notes %}
+      <div class="col mb-2" style="width:80vw;">
+          <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title">{{note.title}}</h3>
+                <p class="card-text">{{note.text|truncatechars:70}}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{% url 'study:editnote' noteid=note.id%}" class="align-self-start btn btn-lgray">Edit</a>
+                <a href="{% url 'study:deletenote' note=note.id %}" class="btn btn-lgray">Delete</a>
+                <p class="card-text text-lgray">{{note.date_created}}</p>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

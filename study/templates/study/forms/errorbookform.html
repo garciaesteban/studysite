@@ -1,0 +1,57 @@
+<div class="modal fade" id="errorbookform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="True">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Create Book</h3>
+        <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container-fluid">
+        <div class="modal-body">
+          <form action="{% url 'study:home' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col">
+                <small class="form-text">
+                  {% for error in errorBookForm.title.errors %}
+                    * {{error}}
+                  {% endfor %}
+                </small>
+                <label class="form-text" for="{{errorBookForm.title.id_for_label}}">{{errorBookForm.title.label}}</label>
+                {{errorBookForm.title}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col">
+                <label class="form-text" for="{{errorBookForm.author.id_for_label}}">{{errorBookForm.author.label}}</label>
+                {{errorBookForm.author}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col">
+                <label class="form-text" for="{{errorBookForm.publisher.id_for_label}}">{{errorBookForm.publisher.label}}</label>
+                {{errorBookForm.publisher}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-2">
+                <small class="form-text">
+                  {% for error in errorBookForm.chapters.errors %}
+                    * {{error}}
+                  {% endfor %}
+                </small>
+                <label class="form-text" for="{{errorBookForm.chapters.id_for_label}}">{{errorBookForm.chapters.label}}</label>
+                {{errorBookForm.chapters}}
+              </div>
+            </div>
+            <div class="form-row">
+              <button type="button" class="btn btn-dgray text-lgray mr-1" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dgray text-lgray">Create Book</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

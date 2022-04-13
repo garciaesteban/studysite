@@ -1,0 +1,47 @@
+<div class="modal fade" id="bookform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Create Book</h3>
+        <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container-fluid">
+        <div class="modal-body">
+          <form action="{% url 'study:home' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col">
+                <label class="form-text" for="{{bookForm.title.id_for_label}}">{{bookForm.title.label}}</label>
+                {{bookForm.title}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col">
+                <label class="form-text" for="{{bookForm.author.id_for_label}}">{{bookForm.author.label}}</label>
+                {{bookForm.author}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col">
+                <label class="form-text" for="{{bookForm.publisher.id_for_label}}">{{bookForm.publisher.label}}</label>
+                {{bookForm.publisher}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-2">
+                <label class="form-text" for="{{bookForm.chapters.id_for_label}}">{{bookForm.chapters.label}}</label>
+                {{bookForm.chapters}}
+              </div>
+            </div>
+            <div class="form-row">
+              <button type="button" class="btn btn-dgray text-lgray mr-1" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dgray text-lgray" name="button">Create Book</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

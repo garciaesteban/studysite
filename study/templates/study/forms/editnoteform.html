@@ -1,0 +1,50 @@
+<div class="container w-50">
+  <form action="{% url 'study:editnote' noteid=note_id %}" method="post" novalidate>
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col">
+      <small class="form-text">
+        {% for error in noteForm.title.errors %}
+          * {{error}}
+        {% endfor %}
+      </small>
+      <label class="form-text" for="{{noteForm.title.id_for_label}}">{{noteForm.title.label}}</label>
+      {{noteForm.title}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label class="form-text" for="{{noteForm.text.id_for_label}}">{{noteForm.text.label}}</label>
+      {{noteForm.text}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label class="form-text" for="{{noteForm.chapter.id_for_label}}">{{noteForm.chapter.label}}</label>
+      {{noteForm.chapter}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-2">
+      <small class="form-text">
+        {% for error in noteForm.chapters.errors %}
+          * {{error}}
+        {% endfor %}
+      </small>
+      <label class="form-text" for="{{noteForm.start_page.id_for_label}}">{{noteForm.start_page.label}}</label>
+      {{noteForm.start_page}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-2">
+      <label class="form-text" for="{{noteForm.end_page.id_for_label}}">{{noteForm.end_page.label}}</label>
+      {{noteForm.end_page}}
+    </div>
+  </div>
+  <div class="form-row">
+    <a type="button" class="btn btn-dgray text-lgray mr-1" href="{{ back }}">Back</a>
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="btn btn-dgray text-lgray" name="button">Save</button>
+  </div>
+</form>
+</div>
